@@ -1,101 +1,106 @@
-import Image from "next/image";
+import { MainLayout } from '@/components/layout/MainLayout';
+import { Button } from '@/components/ui/button';
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
+import { ArrowRight, BookOpen, ShieldCheck, Target } from 'lucide-react';
+import Link from 'next/link';
 
 export default function Home() {
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="https://nextjs.org/icons/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              app/page.tsx
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
+    <MainLayout>
+      <div className="flex flex-col items-center w-full">
+        {/* --- Hero Section --- */}
+        <section className="w-full max-w-4xl mx-auto text-center py-20 md:py-32 animate-in fade-in slide-in-from-bottom-4 duration-700">
+          <div className="inline-flex items-center rounded-full border px-3 py-1 text-sm font-semibold transition-colors bg-indigo-50 text-indigo-700 border-indigo-100 hover:bg-indigo-100 mb-8 cursor-default">
+            ✨ Introducing Skill to Job 1.0
+          </div>
+          
+          <h1 className="text-5xl md:text-7xl font-extrabold tracking-tight text-slate-900 mb-8 leading-tight">
+            Hire Smarter. <br className="hidden md:block" /> Prove Skills. Get Hired.
+          </h1>
+          
+          <p className="text-xl text-slate-600 mb-10 max-w-2xl mx-auto leading-relaxed">
+            The ultimate platform to bridge the gap between your current skillset and your dream career. Validate your expertise, find tailored learning tracks, and land the job you deserve.
+          </p>
+          
+          <div className="flex flex-col sm:flex-row justify-center items-center gap-4">
+            <Button asChild size="lg" className="h-14 px-8 text-base bg-indigo-600 hover:bg-indigo-700 text-white rounded-full transition-all shadow-md hover:shadow-lg">
+              <Link href="/login">
+                Get Started <ArrowRight className="ml-2 w-5 h-5" />
+              </Link>
+            </Button>
+            <Button asChild variant="outline" size="lg" className="h-14 px-8 text-base rounded-full border-slate-200 hover:bg-slate-50 text-slate-700 transition-colors">
+              <a href="#features">Learn More</a>
+            </Button>
+          </div>
+        </section>
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="https://nextjs.org/icons/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
+        {/* --- Features Section --- */}
+        <section id="features" className="w-full max-w-6xl mx-auto py-24 scroll-mt-20">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-slate-900 mb-4">
+              Everything you need to succeed
+            </h2>
+            <p className="text-lg text-slate-600 max-w-2xl mx-auto">
+              Our platform provides all the tools necessary to analyze your skills, build your portfolio, and connect with top employers.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 px-4 md:px-0">
+            <FeatureCard 
+              icon={<Target className="w-8 h-8 text-indigo-600" />}
+              title="Skill Gap Analysis"
+              description="Identify exactly what you need to learn to qualify for your target roles with our precise, data-driven matching algorithm."
             />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+            <FeatureCard 
+              icon={<BookOpen className="w-8 h-8 text-indigo-600" />}
+              title="Curated Learning Tracks"
+              description="Stop guessing what to learn next. Get personalized roadmaps featuring the highest-rated resources available online."
+            />
+            <FeatureCard 
+              icon={<ShieldCheck className="w-8 h-8 text-indigo-600" />}
+              title="Verified Portfolios"
+              description="Prove your capabilities through practical, real-world assessments and effortlessly stand out to premium employers."
+            />
+          </div>
+        </section>
+
+        {/* --- CTA Section --- */}
+        <section className="w-full max-w-5xl mx-auto py-20 px-4 md:px-0 mb-12">
+          <Card className="bg-slate-900 border-none text-white text-center p-8 md:p-14 shadow-2xl rounded-3xl">
+            <CardHeader className="p-0 mb-6">
+              <CardTitle className="text-3xl md:text-5xl font-bold mb-4">Ready to accelerate your career?</CardTitle>
+              <CardDescription className="text-slate-300 text-lg md:text-xl max-w-2xl mx-auto">
+                Join thousands of professionals who have already bridged their skill gaps and landed their dream roles today.
+              </CardDescription>
+            </CardHeader>
+            <CardContent className="p-0 flex justify-center mt-8">
+              <Button asChild size="lg" className="bg-white text-slate-900 hover:bg-slate-100 rounded-full h-14 px-10 font-semibold text-base transition-colors shadow-lg">
+                <Link href="/login">Create Free Account</Link>
+              </Button>
+            </CardContent>
+          </Card>
+        </section>
+      </div>
+    </MainLayout>
+  );
+}
+
+// --- Local Components ---
+
+function FeatureCard({ icon, title, description }: { icon: React.ReactNode, title: string, description: string }) {
+  return (
+    <Card className="border-slate-200 shadow-sm hover:shadow-md transition-shadow duration-300 bg-white rounded-2xl">
+      <CardHeader>
+        <div className="mb-4 bg-indigo-50 w-16 h-16 rounded-2xl flex items-center justify-center">
+          {icon}
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
+        <CardTitle className="text-xl font-bold text-slate-900">{title}</CardTitle>
+      </CardHeader>
+      <CardContent>
+        <p className="text-slate-600 leading-relaxed">
+          {description}
+        </p>
+      </CardContent>
+    </Card>
   );
 }
