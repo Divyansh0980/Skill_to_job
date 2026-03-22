@@ -27,6 +27,7 @@
   }
   .dark {
     --background: 240 10% 4%; /* very dark zinc */
+    --glow-color: 82 80% 60%; /* Complementary to default Violet (262) */
     --foreground: 0 0% 98%;
     --card: 240 10% 6%;
     --card-foreground: 0 0% 98%;
@@ -45,6 +46,52 @@
     --border: 240 10% 15%;
     --input: 240 10% 15%;
     --ring: 262 80% 65%;
+  }
+
+  /* --- SLEEK COLOR VARIANTS --- */
+  
+  /* Theme: Blue */
+  [data-color="blue"] {
+    --primary: 221.2 83.2% 53.3%;
+    --ring: 221.2 83.2% 53.3%;
+  }
+  .dark[data-color="blue"] {
+    --primary: 217.2 91.2% 59.8%;
+    --glow-color: 37 91.2% 60%; /* Complementary Orange */
+    --ring: 217.2 91.2% 59.8%;
+  }
+
+  /* Theme: Emerald */
+  [data-color="emerald"] {
+    --primary: 152 76% 50%;
+    --ring: 152 76% 50%;
+  }
+  .dark[data-color="emerald"] {
+    --primary: 152 76% 55%;
+    --glow-color: 332 76% 60%; /* Complementary Rose */
+    --ring: 152 76% 55%;
+  }
+
+  /* Theme: Rose */
+  [data-color="rose"] {
+    --primary: 346.8 77.2% 49.8%;
+    --ring: 346.8 77.2% 49.8%;
+  }
+  .dark[data-color="rose"] {
+    --primary: 346.8 77.2% 55%;
+    --glow-color: 166.8 77.2% 60%; /* Complementary Mint/Teal */
+    --ring: 346.8 77.2% 55%;
+  }
+
+  /* Theme: Orange */
+  [data-color="orange"] {
+    --primary: 24.6 95% 53.1%;
+    --ring: 24.6 95% 53.1%;
+  }
+  .dark[data-color="orange"] {
+    --primary: 24.6 95% 58%;
+    --glow-color: 204.6 95% 60%; /* Complementary Light Blue */
+    --ring: 24.6 95% 58%;
   }
 }
 

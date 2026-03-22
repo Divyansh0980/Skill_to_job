@@ -4,7 +4,7 @@ import * as React from "react";
 import { signIn } from "next-auth/react";
 import { useSearchParams } from "next/navigation";
 import { Button } from "@/components/ui/button";
-import { Github, Loader2 } from "lucide-react";
+import { Github, Loader2, Eye, EyeOff } from "lucide-react";
 
 export default function LoginPage() {
   const searchParams = useSearchParams();
@@ -20,6 +20,7 @@ export default function LoginPage() {
   const [name, setName] = React.useState("");
   const [email, setEmail] = React.useState("");
   const [password, setPassword] = React.useState("");
+  const [showPassword, setShowPassword] = React.useState(false);
   const [error, setError] = React.useState<string | null>(errorUrl ? "Authentication failed. Please check your credentials." : null);
 
   const handleOAuthSignIn = async (provider: "google" | "github") => {
@@ -230,16 +231,33 @@ export default function LoginPage() {
                   <div className="flex items-center">
                     <label htmlFor="password" className="text-sm font-medium leading-none">Password</label>
                   </div>
-                  <input
-                    id="password"
-                    type="password"
-                    placeholder="••••••••"
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
-                    required
-                    disabled={isLoadingGithub || isLoadingGoogle || isLoadingCredentials}
-                    className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:opacity-50"
-                  />
+                  <div className="relative">
+                    <input
+                      id="password"
+                      type={showPassword ? "text" : "password"}
+                      placeholder="••••••••"
+                      value={password}
+                      onChange={(e) => setPassword(e.target.value)}
+                      required
+                      disabled={isLoadingGithub || isLoadingGoogle || isLoadingCredentials}
+                      className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 pr-10 text-sm ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:opacity-50"
+                    />
+                    <button
+                      type="button"
+                      onPointerDown={() => setShowPassword(true)}
+                      onPointerUp={() => setShowPassword(false)}
+                      onPointerLeave={() => setShowPassword(false)}
+                      className="absolute right-0 top-0 h-10 px-3 py-2 text-muted-foreground hover:text-foreground active:scale-95 transition-transform"
+                      tabIndex={-1}
+                      disabled={isLoadingGithub || isLoadingGoogle || isLoadingCredentials}
+                    >
+                      {showPassword ? (
+                        <Eye className="h-4 w-4" />
+                      ) : (
+                        <EyeOff className="h-4 w-4" />
+                      )}
+                    </button>
+                  </div>
                 </div>
                 {error && (
                   <div className="text-sm text-destructive mt-2 text-center font-medium">
