@@ -19,15 +19,15 @@ export default function Home() {
             <span className="flex h-2 w-2 rounded-full bg-primary mr-2 animate-pulse"></span>
             Introducing Skill to Job 1.0
           </div>
-          
+
           <h1 className="text-5xl md:text-7xl font-extrabold tracking-tight mb-8 leading-tight bg-clip-text text-transparent bg-gradient-to-b from-foreground to-foreground/60">
             Hire Smarter. <br className="hidden md:block" /> Prove Skills. Get Hired.
           </h1>
-          
+
           <p className="text-xl text-muted-foreground mb-12 max-w-2xl mx-auto leading-relaxed">
             The ultimate platform to bridge the gap between your current skillset and your dream career. Validate your expertise, find tailored learning tracks, and land the job you deserve.
           </p>
-          
+
           <div className="flex flex-col sm:flex-row justify-center items-center gap-4">
             <Button render={<Link href="/login" />} size="lg" className="h-12 px-8 text-base bg-primary hover:bg-primary/90 text-primary-foreground rounded-full transition-all shadow-lg hover:shadow-xl border border-primary/20">
               Get Started <ArrowRight className="ml-2 w-4 h-4" />
@@ -50,17 +50,17 @@ export default function Home() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 px-4 md:px-0">
-            <FeatureCard 
+            <FeatureCard
               icon={<Target className="w-7 h-7 text-primary" />}
               title="Skill Gap Analysis"
               description="Identify exactly what you need to learn to qualify for your target roles with our precise, data-driven matching algorithm."
             />
-            <FeatureCard 
+            <FeatureCard
               icon={<BookOpen className="w-7 h-7 text-primary" />}
               title="Curated Learning Tracks"
               description="Stop guessing what to learn next. Get personalized roadmaps featuring the highest-rated resources available online."
             />
-            <FeatureCard 
+            <FeatureCard
               icon={<ShieldCheck className="w-7 h-7 text-primary" />}
               title="Verified Portfolios"
               description="Prove your capabilities through practical, real-world assessments and effortlessly stand out to premium employers."
@@ -74,9 +74,9 @@ export default function Home() {
           <Card className="bg-card/80 backdrop-blur-xl border border-border text-center p-10 md:p-16 shadow-2xl rounded-[2.5rem] relative overflow-hidden">
             <div className="absolute top-0 right-0 p-32 bg-primary/10 blur-[100px] rounded-full"></div>
             <div className="absolute bottom-0 left-0 p-32 bg-fuchsia-500/10 blur-[100px] rounded-full"></div>
-            
+
             <CardHeader className="p-0 mb-8 relative z-10">
-              <CardTitle className="text-4xl md:text-6xl font-bold mb-6 tracking-tight text-foreground">Ready to accelerate <br/> your career?</CardTitle>
+              <CardTitle className="text-4xl md:text-6xl font-bold mb-6 tracking-tight text-foreground">Ready to accelerate <br /> your career?</CardTitle>
               <CardDescription className="text-muted-foreground text-lg md:text-xl max-w-2xl mx-auto">
                 Join thousands of professionals who have already bridged their skill gaps and landed their dream roles today.
               </CardDescription>
